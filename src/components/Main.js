@@ -6,18 +6,36 @@ import * as actions from '../actions';
 import 'styles/main.scss';
 
 export class Main extends React.Component {
-  updateErrors(errors) {
-    const { updateErrors } = this.props;
-    updateErrors(errors);
+  constructor() {
+    super();
+    this.state = { isPipelineMode: true };
+  }
+
+  changeEditorMode(isPipelineMode) {
+    this.setState({ isPipelineMode });
   }
 
   render() {
+    const { isPipelineMode } = this.state;
+
     return (
-      <div
-        className='index'
-      >
+      <div className='index'>
         <Header />
         <div className='container'>
+          <div className='tab-selectors'>
+            <span
+              className={isPipelineMode ? 'selected' : ''}
+              onClick={this.changeEditorMode.bind(this, true)}
+            >
+              Pipeline
+            </span>
+            <span
+              className={isPipelineMode ? '' : 'selected'}
+              onClick={this.changeEditorMode.bind(this, false)}
+            >
+              Code
+            </span>
+          </div>
         </div>
       </div>
     );
