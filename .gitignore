@@ -3,19 +3,8 @@ logs
 *.log
 npm-debug.log*
 
-# Runtime data
-pids
-*.pid
-*.seed
-
 # Optional npm cache directory
 .npm
 
 node_modules
-
-# Website side
-website/dist
-
-# validator module side
-validator/lib
 dist

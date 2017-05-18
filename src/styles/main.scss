@@ -1,44 +1,47 @@
 .index {
   height: 100%;
+
+  .tab-selectors {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    top: 30px;
+
+    span {
+      width: 150px;
+      text-align: center;
+      font-size: 21px;
+      font-weight: bold;
+      display: inline-block;
+      color: gray;
+      background: #d5d5d5;
+      cursor: pointer;
+      transition: color 0.5s ease-in-out, background 0.2s ease-in-out;
+
+      margin-left: 15px;
+
+      &:nth-child(1) {
+        margin-left: 0;
+      }
+
+      &.selected {
+        background-color: #fff;
+        color: #000;
+      }
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
   .container {
     background-color: #fff;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.25);
-    margin: 60px 20px 0 20px;
-    height: calc(100% - 65px);
+    margin: 30px 20px 0 20px;
+    height: calc(100% - 115px);
     box-sizing: border-box;
-
-    .tab-selectors {
-      display: flex;
-      justify-content: center;
-      position: relative;
-      top: -31px;
-
-      span {
-        width: 150px;
-        text-align: center;
-        font-size: 21px;
-        font-weight: bold;
-        display: inline-block;
-        color: gray;
-        background: #d5d5d5;
-        cursor: pointer;
-        transition: color 0.5s ease-in-out, background 0.2s ease-in-out;
-
-        margin-left: 15px;
-
-        &:nth-child(1) {
-          margin-left: 0;
-        }
-
-        &.selected {
-          background-color: #fff;
-          color: #000;
-        }
-
-        &:hover {
-          color: #000;
-        }
-      }
-    }
+    overflow-y: scroll;
   }
 }

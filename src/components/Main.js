@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './Header';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
 
 import 'styles/main.scss';
+import PipelineEditor from './PipelineEditor';
+import CodeEditor from './CodeEditor';
 
-export class Main extends React.Component {
+export default class Main extends Component {
   constructor() {
     super();
     this.state = { isPipelineMode: true };
@@ -21,30 +21,30 @@ export class Main extends React.Component {
     return (
       <div className='index'>
         <Header />
+        <div className='tab-selectors'>
+          <span
+            className={isPipelineMode ? 'selected' : ''}
+            onClick={this.changeEditorMode.bind(this, true)}
+          >
+            Pipeline
+          </span>
+          <span
+            className={isPipelineMode ? '' : 'selected'}
+            onClick={this.changeEditorMode.bind(this, false)}
+          >
+            Code
+          </span>
+        </div>
         <div className='container'>
-          <div className='tab-selectors'>
-            <span
-              className={isPipelineMode ? 'selected' : ''}
-              onClick={this.changeEditorMode.bind(this, true)}
-            >
-              Pipeline
-            </span>
-            <span
-              className={isPipelineMode ? '' : 'selected'}
-              onClick={this.changeEditorMode.bind(this, false)}
-            >
-              Code
-            </span>
-          </div>
+          {
+            isPipelineMode ?
+            <PipelineEditor
+            /> :
+            <CodeEditor
+            />
+          }
         </div>
       </div>
     );
   }
 }
-
-function mapStateToProps(state) {
-  return state;
-}
-
-const ConnectedMain = connect(mapStateToProps, actions)(Main);
-export default ConnectedMain;
